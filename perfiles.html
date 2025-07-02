@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="css/perfiles.css">
+  <title>Perfiles de Cargo | Filestore S.A.S</title>
+</head>
+<body>
+
+  <header>
+    <img src="img/Imagen3.png" alt="Logo Filestore S.A.S" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="manual.html">Manual de usuario</a></li>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="perfiles.html">Perfiles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="perfiles-cargo">
+  <h1>Perfiles de Cargo</h1>
+
+  <div class="perfil" data-perfil="gerencia">
+    <img src="img/p1.png" alt="Perfil Gerencia" />
+    <h2>Gerencia</h2>
+    <p>Responsable de la dirección general y toma de decisiones estratégicas.</p>
+  </div>
+
+  <div class="perfil" data-perfil="admin">
+    <img src="img/p2.png" alt="Perfil Apoyo Administrativo" />
+    <h2>Apoyo Administrativo</h2>
+    <p>Gestión documental, atención al cliente y soporte de oficina.</p>
+  </div>
+
+  <div class="perfil" data-perfil="talento">
+    <img src="img/p3.png" alt="Perfil Talento Humano" />
+    <h2>Talento Humano</h2>
+    <p>Encargado de selección de personal, bienestar y procesos laborales.</p>
+  </div>
+
+  <div class="perfil" data-perfil="conta">
+    <img src="img/p4.png" alt="Perfil Contabilidad" />
+    <h2>Contabilidad</h2>
+    <p>Gestión de finanzas, informes contables y trámites tributarios.</p>
+  </div>
+
+  <div class="perfil" data-perfil="juridica">
+    <img src="img/p5.png" alt="Perfil Jurídica" />
+    <h2>Jurídica</h2>
+    <p>Asesoría legal, contratos y cumplimiento normativo.</p>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="cerrar" id="cerrarModal">&times;</span>
+    <img id="modalImg" src="" alt="Imagen perfil ampliada" />
+    <h2 id="modalTitulo"></h2>
+    <p id="modalTexto"></p>
+  </div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Filestore S.A.S</h3>
+        <p>“Soporte En El Futuro”</p>
+        <p>© 2025 Todos los derechos reservados</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-contacto">
+        <h4>Contacto</h4>
+        <p>Email: contacto@filestore.com</p>
+        <p>Teléfono: +57 123 456 7890</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  const perfiles = document.querySelectorAll('.perfil');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitulo = document.getElementById('modalTitulo');
+  const modalTexto = document.getElementById('modalTexto');
+  const cerrarModal = document.getElementById('cerrarModal');
+
+  const dataPerfiles = {
+    gerencia: {
+      img: 'img/p1.png',
+      titulo: 'Gerencia',
+      texto: 'Responsable de la dirección general y toma de decisiones estratégicas.'
+    },
+    admin: {
+      img: 'img/p2.png',
+      titulo: 'Apoyo Administrativo',
+      texto: 'Gestión documental, atención al cliente y soporte de oficina.'
+    },
+    talento: {
+      img: 'img/p3.png',
+      titulo: 'Talento Humano',
+      texto: 'Encargado de selección de personal, bienestar y procesos laborales.'
+    },
+    conta: {
+      img: 'img/p4.png',
+      titulo: 'Contabilidad',
+      texto: 'Gestión de finanzas, informes contables y trámites tributarios.'
+    },
+    juridica: {
+      img: 'img/p5.png',
+      titulo: 'Jurídica',
+      texto: 'Asesoría legal, contratos y cumplimiento normativo.'
+    }
+  };
+
+  perfiles.forEach(perfil => {
+    perfil.addEventListener('click', () => {
+      const key = perfil.getAttribute('data-perfil');
+      const data = dataPerfiles[key];
+      modalImg.src = data.img;
+      modalTitulo.textContent = data.titulo;
+      modalTexto.textContent = data.texto;
+      modal.style.display = 'flex';
+    });
+  });
+
+  cerrarModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
